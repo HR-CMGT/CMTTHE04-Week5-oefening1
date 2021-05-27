@@ -1,47 +1,49 @@
+import { Shark } from "./shark.js"
+import { TropicalFish } from "./tropicalfish.js"
+
 class Game {
+      
+    private fish : TropicalFish[] = []
+    private shark : Shark
     
-    private balls: Ball[] = []
-    private paddle: Paddle
 
     constructor() {
-        this.paddle = new Paddle(20, 87, 83)
+        console.log("Game was created!")
+        
+        // Create the fish
+        this.fish.push(new TropicalFish("fish"))
+        this.fish.push(new TropicalFish("fish"))
+        this.fish.push(new TropicalFish("fish"))
+        this.fish.push(new TropicalFish("fish"))
+        this.fish.push(new TropicalFish("fish"))
 
-        for (var i = 0; i < 5; i++) {
-            this.balls.push(new Ball())
-        }
+        // Create the shark
+        this.shark = new Shark("shark")
 
-        this.update()        
+        this.gameLoop()
     }
 
-    public update(): void {
-        for (var b of this.balls) {
+    private gameLoop() : void {
+        // update the fish
+        for (const fish of this.fish) {
+            fish.update()
 
-            // ball hits paddle
-            if (this.checkCollision(b.getRectangle(), this.paddle.getRectangle())) {
-                b.hitPaddle()
+            if(this.checkCollision(fish.getBoundingRect(), this.shark.getBoundingRect())) {
+                fish.killFish()
             }
-
-            // ball leaves the screen: gameover!
-            if (b.getRectangle().left < 0) {
-                console.log("game over")
-            }
-
-            b.update()
         }
+        // update the shark
+        this.shark.update()
 
-        this.paddle.update()
-
-        requestAnimationFrame(() => this.update())
+        requestAnimationFrame(() => this.gameLoop())
     }
 
-    private checkCollision(a: ClientRect, b: ClientRect) {
+    private checkCollision(a: ClientRect, b: ClientRect) : boolean {
         return (a.left <= b.right &&
             b.left <= a.right &&
             a.top <= b.bottom &&
             b.top <= a.bottom)
-    }
-    
+     }
 } 
 
-
-window.addEventListener("load", () => new Game())
+new Game()

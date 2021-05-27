@@ -1,28 +1,33 @@
-# CMTTHE04 Week5 oefening 1
+# CMTTHE04 Week3 oefening 1
 
-## Inheritance
+Shark Attack in Typescript 🦈
+![sharkattack](./docs/images/sharkattack.png)
 
-In [week 3 hebben we een pong game gebouwd met composition](https://github.com/HR-CMGT/CMTTHE04-Week3-oefening1). In [week 4-oefening 2](https://github.com/HR-CMGT/CMTTHE04-Week4-oefening2) kan je daar schermen aan toevoegen. Je kan verder gaan met deze code, of je kan dit project als startpunt gebruiken voor de oefening met Inheritance. 
+<br>
+<br>
+
+## Klassendiagram
+![Klassendiagram](./docs/images/classdiagram.png)
 
 ## Opdracht
 
-Gebruik inheritance om de **overeenkomstige eigenschappen** én de **overeenkomstige functies** van *Ball* en *Paddle* in een GameObject class te plaatsen. 
+Gebruik inheritance om de **overeenkomstige eigenschappen** én de **overeenkomstige functies** van *TropicalFish* en *Shark* in een *Fish* class te plaatsen. 
 
-**GameObject**
+**Fish**
 ```
-class GameObject {
+class Fish {
     constructor() {
-        console.log("I am a gameobject")
+        console.log("I am a Fish")
     }
 }
 ```
 
 ## Opdracht
 
-Ball en Paddle erven van GameObject en krijgen daardoor automatisch de properties en methods van GameObject. Gebruik `Extends` en `super()` om te overerven. Je kan `private` in de parent veranderen in `protected` (Encapsulation).
+TropicalFish en Shark erven van Fish en krijgen daardoor automatisch de properties en methods van Fish. Gebruik `extends` en `super()` om te overerven. Je kan `private` in de parent veranderen in `protected` (Encapsulation).
 
 ```
-class Ball extends GameObject {
+class TropicalFish extends Fish {
     constructor() {
         super()
     }
@@ -35,15 +40,15 @@ Als een functie in een child dezelfde naam heeft als een functie in de parent, d
 Kan je dit principe toepassen in Pong?
 
 ```
-class GameObject {
+class Fish {
     public update() : void {
-        console.log("Gameobject is updating!")
+        console.log("Fish is updating!")
     }
 }
-class Ball extends GameObject {
+class TropicalFish extends Fish {
     public update() : void {
         super.update()
-        console.log("Ball is updating!")
+        console.log("TropicalFish is updating!")
     }
 }
 ```
@@ -52,6 +57,7 @@ class Ball extends GameObject {
 
 Maak de game helemaal af met:
 
-- Multiplayer. Twee (of meer) paddles met eigen controls.
+- Multiplayer. Twee (of meer) Sharks met eigen controls.
 - Score per player bijhouden.
-- Oplopende moeilijkheidsgraad naar mate de score hoger wordt (bv. snellere ballen, of meer ballen).
+- Oplopende moeilijkheidsgraad naar mate de score hoger wordt (bv. snellere TropicalFishes, of meer TropicalFishes).
+- Voeg nog andere soorten Fish toe met ander gedrag.
