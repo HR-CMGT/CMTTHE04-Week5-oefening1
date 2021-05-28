@@ -1,4 +1,4 @@
-# CMTTHE04 Week3 oefening 1
+# CMTTHE04 Week 5 
 
 Shark Attack in Typescript 🦈
 ![sharkattack](./docs/images/sharkattack.png)
